@@ -3,9 +3,11 @@
 
 {% include head.html %}
 
-<body id="page-top">
-  {% include nav.html %}
-  {% include installation-detail.html %}
+<body id="default-body">
+  {% include nav-bar.html %}
+
+  {{ content }}
+
   {% include scripts.html %}
 </body>
 

@@ -155,7 +155,7 @@ header {
     min-height: auto;
     @include background-cover;
     background-position: center;
-    background-image: url('../img/header.png');
+    background-image: url('/img/header.png');
     text-align: center;
     color: white;
     .header-content {
@@ -211,16 +211,16 @@ header {
     margin-top: 0;
 }
 
-.service-box {
-    max-width: 400px;
-    margin: 50px auto 0;
-    @media (min-width: 992px) {
-        margin: 20px auto 0;
-    }
-    p {
-        margin-bottom: 0;
-    }
-}
+// .service-box {
+//     max-width: 400px;
+//     margin: 50px auto 0;
+//     @media (min-width: 992px) {
+//         margin: 20px auto 0;
+//     }
+//     p {
+//         margin-bottom: 0;
+//     }
+// }
 
 .portfolio-box {
     position: relative;
@@ -278,11 +278,11 @@ header {
     }
 }
 
-.call-to-action {
-    h2 {
-        margin: 0 auto 20px;
-    }
-}
+// .call-to-action {
+//     h2 {
+//         margin: 0 auto 20px;
+//     }
+// }
 
 // Bootstrap Overrides
 .text-primary {
