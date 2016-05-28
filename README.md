@@ -15,7 +15,7 @@ Before pushing your commits to the GitHub repository, you may want to test you m
 Once you installed jekyll as suggested in the previous section, use the following command in a terminal to start a local sever serving your local website @ http://localhost:4000/
 
 ```bash
-bundle exec jekyll serve
+bundle exec jekyll serve --baseurl ''
 ```
 
 ## Acknowledgments
