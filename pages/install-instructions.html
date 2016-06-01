@@ -13,6 +13,11 @@ layout: default
     </div>
 </section> -->
 
+<!-- GETTING STARTED -->
+{% include getting-started.html %}
+
+<hr class="secondary"> <!-- add a line-->
+
 <!-- INSTALL EVERTims -->
 <section id="install-evertims" class="bg-primary">
     <div class="container">
@@ -20,37 +25,104 @@ layout: default
             <div class="col-lg-12 text-justify">
                 <h2 class="section-heading">Install EVERTims</h2>
                 <br>
-                <p> This section guides you through the installation of EVERT (raytracing library) and EVERTims (raytracing program based on EVERT).</p>
+                <p> This section guides you through the installation of EVERT (raytracing library) and EVERTims (raytracing program based on EVERT). The symbol
+                    <kbd>//</kbd> used in this section refers to the root of the EVERTims project.</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 text-justify">
-                <h3 class="section-heading">Install EVERTims: EVERT</h3>
-                <br>
-                <p> svn co https://evert.svn.sourceforge.net/svnroot/evert/branches/dev-spat evert</p>
+        <br>
+        <div class="div-bordered-on-primary-bg">
+            <div class="row">
+                <div class="col-lg-12 text-justify">
+                    <h3 class="section-heading">
+                        Install EVERTims on OSX
+                        <img class="left" src="{{ site.baseurl }}/img/logo-apple-white.png" width="5%" alt="" title="" style="float:right;margin:0 10px 0 20px;" />
+                    </h3>
+                    <p>With a terminal window, go to the root of you EVERTims project and type:</p>
+
+                    <p>{% highlight bash %}
+# create source directory
+mkdir source cd source
+
+# get EVERT
+svn co https://evert.svn.sourceforge.net/svnroot/evert/branches/dev-spat evert
+
+# compile EVERT (Xcode)
+cd evert/build/macos
+xcodebuild
+cd ../../..
+
+# get EVERTims
+svn co https://evertims.svn.sourceforge.net/svnroot/evertims/branches/dev-spat evertims
+
+# compile EVERTims (Xcode)
+cd evertims/build/macos
+xcodebuild
+cd ../../..
+
+# back to EVERTims root directory
+cd ..
+{% endhighlight %}
+                    </p>
+                </div>
             </div>
         </div>
+        <br>
+        <div class="div-bordered-on-primary-bg">
+            <div class="row">
+                <div class="col-lg-12 text-justify">
+                    <h3 class="section-heading">
+                        Install EVERTims on Windows
+                        <img class="left" src="{{ site.baseurl }}/img/logo-windows-white.png" width="5%" alt="" title="" style="float:right;margin:0 10px 0 20px;" />
+                    </h3>
+                    <p>Heer.. segfault?</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="div-bordered-on-primary-bg">
+            <div class="row">
+                <div class="col-lg-12 text-justify">
+                    <h3 class="section-heading">
+                        Install EVERTims on Linux
+                        <img class="left" src="{{ site.baseurl }}/img/logo-linux-white.png" width="5%" alt="" title="" style="float:right;margin:0 10px 0 20px;" />
+                    </h3>
+                    <p>Linux is DIY right?</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<hr class="secondary"> <!-- add a line-->
+
+<!-- INSTALL BLENDER -->
+
+<section id="install-blender" class="bg-primary">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-justify">
-                <h3 class="section-heading">Install EVERTims: EVERTims</h3>
+            <div class="col-lg-12 text-left">
+                <h2 class="section-heading">Install Blender Addon</h2>
                 <br>
-                <p> svn co https://evertims.svn.sourceforge.net/svnroot/evertims/branches/dev-spat evertims</p>
+                <p> This section guides you through the installation of the Blender addon designed for the creation and visual exploration of EVERTims scene.The symbol
+                    <kbd>//</kbd> used in this section refers to the root of the EVERTims project.</p>
+                <p> Start by downloading the <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/game_engine_evertims/archive/master.zip">EVERTims Blender addon</a> from github or go to the root of you EVERTims project and type:</p>
+
+                <p>{% highlight bash %}
+# get Blender addon
+git clone https://github.com/EVERTims/game_engine_evertims.git
+{% endhighlight %}
+                </p>
+                <p>
+                    Now install the addon in Blender, e.g. by following one of the methods presented <a class="text-faded link-on-primary-bg" href="http://blender.stackexchange.com/questions/1688/installing-an-addon">here</a>. You should end-up with the addon nested in the 3D view > Toolbox:
+                </p>
+                <img src="{{ site.baseurl }}/img/blender-addon-screenshot.png" class="img-responsive img-framed-on-primary" alt="">
             </div>
         </div>
     </div>
 </section>
 
-<!-- INSTALL BLENDER -->
-<section id="install-blender">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-left">
-                <h2 class="section-heading">Install Blender</h2>
-                <p> blabla describe blabla.</p>
-            </div>
-        </div>
-    </div>
-</section>
+<hr class="secondary"> <!-- add a line-->
 
 <!-- INSTALL PURE DATA -->
 <section id="install-puredata" class="bg-primary">
@@ -58,7 +130,7 @@ layout: default
         <div class="row">
             <div class="col-lg-12 text-left">
                 <h2 class="section-heading">Install Pd</h2>
-                <p> blabla describe blabla.</p>
+                <p> This section guides you through the installation of the Pure Data addon designed for real-time auralization based on EVERTims simulations. </p>
             </div>
         </div>
     </div>

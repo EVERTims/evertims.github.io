@@ -9,22 +9,23 @@ layout: default
         <div class="row">
             <div class="col-lg-12 col-lg-offset-0 text-justify">
                 <h2 class="section-heading">About the EVERTims project</h2>
-                <!-- <hr class="light"> -->
-                <!-- add a line-->
-                <p class="text-faded">EVERTims is an open source framework for real-time auralization. Given a virtual room (geometry and materials), the main program simulates how acoustic waves propagates there, from defined sources to listeners objects. The results of this simulation feed a real-time auralization engine. In the end, the framework enables virtual environment exploration, completing traditional visual reandering with realistic acoustics propagation.</p>
-                <p class="text-faded">EVERTims framework is composed of three components: The EVERTims program itself (simulate audio propagation), a Blender addon (design, visualize, and explore virtual environment), and a Pd addon (render real-time auralization based on EVERTims simulated propagation)</p>
+                <!-- <hr class="light"> --> <!-- add a line-->
+                <br>
+                <p class="text-faded">EVERTims is an open source framework for real-time auralization. Given a virtual room (geometry and materials), the main EVERTims program simulates how acoustic waves propagates there, from defined sources to listeners objects. The results of this simulation can be used to feed a real-time auralization engine. With the <a class="text-faded link-on-primary-bg" href="https://www.blender.org/">Blender Game Engine</a> being used to create and explore the virtual room, and a <a class="text-faded link-on-primary-bg" href="https://puredata.info/">PureData</a> dataflow handling the auralization, the EVERTims framework enables virtual environment exploration, completing traditional visual rendering with realistic acoustics propagation.</p>
+                <p class="text-faded">EVERTims framework is composed of three components: The EVERTims program itself (simulate audio propagation), a Blender module (design, visualize, and explore virtual environment), and a Pd patch (render real-time auralization based on EVERTims simulated propagation). More on these in the <a class="text-faded link-on-primary-bg" href="{{ site.baseurl }}/index.html/#getting-started">Getting Started</a> section.</p>
+                <p class="text-faded">EVERTims was designed by ... at ... .</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- FRAMEWORK FEATURES -->
-<section id="feature-raytracing">
+<section class="bg-secondary" id="feature-raytracing">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 text-left">
                 <h2 class="section-heading">Raytracing</h2>
-                <p> describe raytracing + media.</p>
+                <p>Lorem ipsum</p>
             </div>
             <div class="col-sm-8 text-center">
                 <div class="embed-responsive embed-responsive-16by9 col-xs-12 text-center">
@@ -44,17 +45,17 @@ layout: default
             </div>
             <div class="col-lg-4 text-right">
                 <h2 class="section-heading">Auralization</h2>
-                <p> describe auralization + media.</p>
+                <p>Lorem ipsum</p>
             </div>
         </div>
     </div>
 </section>
-<section id="feature-visualization">
+<section class="bg-secondary" id="feature-visualization">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 text-left">
                 <h2 class="section-heading">Visualization</h2>
-                <p> describe visualization + media.</p>
+                <p>Lorem ipsum</p>
             </div>
             <div class="col-sm-8 text-center">
                 <div class="embed-responsive embed-responsive-16by9 col-xs-12 text-center">
@@ -65,74 +66,11 @@ layout: default
     </div>
 </section>
 
-
 <!-- GETTING STARTED -->
-<section class="bg-primary" id="services">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Getting started</h2>
-                <hr class="primary">
-                <p> You'll want to start by installing the EVERTims raytracing software, which can then be completed by Blender and Pd addons designed for the occasion.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="no-padding" id="portfolio">
-    <div class="container-fluid">
-        <div class="row no-gutter">
-            <div class="col-lg-4 col-sm-6">
-                <a href="{{ site.baseurl }}/pages/install-instructions.html#install-evertims" class="portfolio-box">
-                    <img src="img/install-evertims.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Setup
-                            </div>
-                            <div class="project-name">
-                                EVERTims raytracing engine
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="{{ site.baseurl }}/pages/install-instructions.html#install-blender" class="portfolio-box">
-                    <img src="{{ site.baseurl }}/img/install-blender.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Setup
-                            </div>
-                            <div class="project-name">
-                                Blender vizualization and exploration
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a href="{{ site.baseurl }}/pages/install-instructions.html#install-puredata" class="portfolio-box">
-                    <img src="{{ site.baseurl }}/img/install-pd.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Setup
-                            </div>
-                            <div class="project-name">
-                                Pure Data auralization
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+{% include getting-started.html %}
 
 <!-- GALLERY -->
-<section id="gallery">
+<section class="bg-secondary" id="gallery">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-lg-offset-0 text-center">
@@ -142,6 +80,7 @@ layout: default
             </div>
         </div>
     </div>
+</section>
     <div class="container-fluid">
         <div class="row no-gutter">
             <div class="col-lg-4 col-sm-6">

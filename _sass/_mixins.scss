@@ -1,8 +1,8 @@
 @mixin transition-all()
 {
-    -webkit-transition: all 0.35s;
-    -moz-transition: all 0.35s;
-    transition: all 0.35s;
+    -webkit-transition: all 0.05s;
+    -moz-transition: all 0.05s;
+    transition: all 0.05s;
 }
 
 @mixin background-cover()
@@ -18,6 +18,8 @@
 	color: $color;
 	background-color: $background;
 	border-color: $border;
+    // border:2px solid $border;
+    // border-radius: 10px;
 	@include transition-all;
 
 	&:hover,
@@ -26,9 +28,10 @@
 	&:active,
 	&.active,
 	.open > .dropdown-toggle & {
-		color: $color;
-		background-color: darken($background, 5%);
-    border-color: darken($border, 7%);
+		color: lighten($color, 100%);
+		background-color: darken($background, 15%);
+    	border-color: darken($border, 27%);
+    	// border: 1px solid black;
 	}
 	&:active,
 	&.active,
@@ -54,6 +57,24 @@
 		background-color: $color;
 	}
 }
+
+
+@mixin link-variant($color, $color-hover)
+{
+
+    color: $color;
+    text-decoration: underline;
+    &:visited {
+      color: $color;
+    }
+    &:hover {
+      color: $color-hover;
+    }
+    &:active {
+      color: $color;
+    }
+}
+
 
 @mixin sans-serif-font()
 {
