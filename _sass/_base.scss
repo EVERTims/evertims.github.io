@@ -118,7 +118,7 @@ aside {
         }
     }
     @media (min-width: 768px) {
-        background-color: rgba(black, 0.5);
+        background-color: rgba(black, 0.7);
         border-color: rgba(white, .3);
         .navbar-header .navbar-brand {
             color: rgba(white, .7);
@@ -280,6 +280,20 @@ header {
             opacity: 1;
         }
     }
+    // attempt to avoid box caption still visible after click with ios device
+    // (while staying on the same page)
+    &:focus,
+    &:active,
+    &:visited {
+        .portfolio-box{
+            opacity: 0;
+        }
+        .portfolio-box-caption {
+            opacity: 0;
+            // color: yellow;
+        }
+    }
+
     @media (min-width: 768px) {
         .portfolio-box-caption {
             .portfolio-box-caption-content {
