@@ -15,3 +15,8 @@ github_username:  EVERTims
 
 # Build settings
 markdown: kramdown
+
+# Define code highlighter
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge

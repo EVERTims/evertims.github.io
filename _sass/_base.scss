@@ -97,7 +97,7 @@ aside {
         > li {
             > a,
             > a:focus {
-                text-transform: uppercase;
+                // text-transform: uppercase;
                 font-weight: 700;
                 font-size: 14px;
                 color: white;
@@ -337,7 +337,7 @@ header {
 }
 
 .link-on-secondary-bg {
-    @include link-variant(black, rgba(255, 100, 100, 1.0));
+    @include link-variant(black, rgba(205, 30, 10, 1.0));
 }
 
 // Button Styles
@@ -350,9 +350,14 @@ header {
     // @include button-variant(black, rgba(140, 235, 70, 0.8), black);
 }
 
+.btn-primary-2 {
+    @include button-variant(rgba(white, .7), rgba(white, .05), white);
+    // @include button-variant(black, rgba(140, 235, 70, 0.8), black);
+}
+
 .btn {
     @include sans-serif-font;
-    border: none;
+    // border: none;
     border-radius: 4px;
     font-weight: 700;
     text-transform: uppercase;
@@ -360,6 +365,20 @@ header {
 
 .btn-xl {
     padding: 15px 30px;
+}
+
+// table, th, td {
+//     // border: 1px solid rgba(white,0.7);
+//     border-collapse: separate;
+// }
+th, td {
+    padding-top: 20px;
+}
+
+code {
+    color: white;
+    background: transparent;
+
 }
 
 .img-framed-on-primary{

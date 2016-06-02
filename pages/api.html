@@ -1,0 +1,238 @@
+---
+layout: default
+---
+
+<!-- API INTRO -->
+<section id="api-top" class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 text-center">
+                <a href="#api-evertims" class="btn btn-primary-2 btn-xl page-scroll">EVERTims API</a>
+            </div>
+            <div class="col-xs-3 col-xs-offset-2 text-center">
+                <a href="#api-blender" class="btn btn-primary-2 btn-xl page-scroll">Blender API</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="secondary"> <!-- add a line-->
+
+<!-- EVERTims API -->
+
+<section id="api-evertims" class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-left">
+                <h2 class="section-heading">EVERTims API</h2>
+            </div>
+            <div class="col-xs-12 text-left ">
+                <table style="width:100%;">
+                <tr>
+                    <td>NAME</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>ims<code></td>
+                    <td>start EVERTims raytracing simulation</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>OPTIONS</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>-s &lt;port&gt;<code></td>
+                    <td>the &lt;port&gt; for the reader to listen to the messages</td>
+                </tr>
+                <tr>
+                    <td><code>-p &lt;pattern&gt;<code></td>
+                    <td>the dummy terminal print writer</td>
+                </tr>
+                <tr>
+                    <td><code>-v &lt;pattern/host:port&gt;<code></td>
+                    <td>the &lt;host&gt; &lt;port&gt; to write in the “VirChor” protocol</td>
+                </tr>
+                <tr>
+                    <td><code>-a &lt;pattern/host:port&gt;<code></td>
+                    <td>the &lt;host&gt; &lt;port&gt; to write reflection data for auralization in the “Markus” protocol</td>
+                </tr>
+                <tr>
+                    <td><code>-m &lt;materialfile&gt;<code></td>
+                    <td>the name of the material file</td>
+                </tr>
+                <tr>
+                    <td><code>-d &lt;mindepth&gt;<code></td>
+                    <td>the minimum order of reflections</td>
+                </tr>
+                <tr>
+                    <td><code>-D &lt;maxdepth&gt;<code></td>
+                    <td>the maximum order of reflections</td>
+                </tr>
+                <tr>
+                    <td><code>-g <code></td>
+                    <td>use the internal graphics module for drawing the result. BROKEN AT THE MOMENT. DO NOT USE!</td>
+                </tr>
+                <tr>
+                    <td><code>-f &lt;roomfile&gt;<code></td>
+                    <td>read the room geometry from the &lt;roomfile&gt;. DOESN’T WORK AT THE MOMENT.</td>
+                </tr>
+            </table>
+            </div>
+            <div class="col-xs-12 text-left ">
+                <p>
+                    <br>
+                    <br> In the above pattern is a regular expression and is matched against the name of the solution formed as ‘source_name-listener_name’. If the pattern is omitted everything matches. Such that command line:
+                </p>
+                <p>{% highlight bash %} ./ims –p ‘listener_0/’ –a waves:10234 –v ‘source_[03].*listener_1/localhost:1980’ {% endhighlight %}
+                </p>
+                <p>
+                    would make the following:
+                    <ul>
+                        <li>print the solution for all the sound sources for listener_0</li>
+                        <li>send to auralization all the reflection paths for all the listeners. The </li>
+                        <li>messages are sent to the port 10234 of computer named ‘waves’.</li>
+                        <li>send to VirChor the reflection paths of sound sources ‘source_0’ and ‘source_3’ for listener_1. The messages are sent to port 1980 at the local computer.</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="secondary"> <!-- add a line-->
+
+<!-- EVERTims API -->
+
+<section id="api-blender" class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-left">
+                <h2 class="section-heading">Blender module API</h2>
+            </div>
+            <div class="col-xs-12 text-left">
+
+                <table style="width:100%">
+                    <col width="30%">
+                    <col width="70%">
+                    <tr>
+                        <td><code>setDebugMode(bool)<code></td>
+                        <td>Enable / disable debug mode (print info in console)</td>
+                    </tr>
+                    <tr>
+                        <td><code>addRoom(obj)<code></td>
+                        <td>Add obj (<i>type: KX_GameObject</i>) as EVERTims room in local dictionnary</td>
+                    </tr>
+                    <tr>
+                        <td><code>addSource(obj)<code></td>
+                        <td>Add obj (<i>type: KX_GameObject</i>) as EVERTims source in local dictionnary</td>
+                    </tr>
+                    <tr>
+                        <td><code>addListener(obj)<code></td>
+                        <td>Add obj (<i>type: KX_GameObject</i>) as EVERTims listener in local dictionnary</td>
+                    </tr>
+                    <tr>
+                        <td><code>initConnection_read(ip, port)<code></td>
+                        <td>Init EVERTims to Blender connection, used to receive raytracing information (<i>ip type: String, port type: Int</i>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>initConnection_write(ip, port)<code></td>
+                        <td>Init Blender to EVERTims connection, used to send room, source, listener, etc. information (<i>ip type: String, port type: Int</i>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>isReady()<code></td>
+                        <td>Check EVERTims minimum requirements to enable simulation start: at least 1 room, 1 listener, 1 source, and initConnection_write parameters must have been defined.</td>
+                    </tr>
+                    <tr>
+                        <td><code>updateClient(objType)<code></td>
+                        <td>Upload Room, Source, and Listener information to EVERTims client (<i>objType type: String</i>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>setMovementUpdateThreshold(threshold)<code></td>
+                        <td>Define a threshold value to limit listener / source update to EVERTims client (<i>threshold type: Float</i>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>startClientSimulation()<code></td>
+                        <td>Start EVERTims simulation: sent '/facefinished' message to EVERTims client to start acoustic calculation, add local pre_draw method to BGE scene stack</td>
+                    </tr>
+                    <tr>
+                        <td><code>updateClient(objType)<code></td>
+                        <td>Upload Room, Source, and Listener information to EVERTims client (<i>objType type: String</i>)</td>
+                    </tr>
+                    <tr>
+                        <td><code>activateRayTracingFeedback(bool)<code></td>
+                        <td>Enable / disable visual feedback on EVERTims raytracing, will init read socket to receive raytracing messages if set to True</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-justify">
+                <p>
+                Example python script (run in BGE) that defines Blender KX_GameObjects 'Room', 'Source', and 'Listener' as EVERTims room, source and listener and start EVERTims simulation:</p>
+            </div>
+            <div class="col-xs-12 text-left">
+{% highlight python %}
+from bge import logic as gl
+from .evertims import Evertims
+
+
+IP_EVERT = 'localhost'              # EVERTims client IP address
+PORT_W = 3858                       # port used by EVERTims client to read data sent by the BGE
+IP_LOCAL = 'localhost'              # local host (this computer) IP address, running the BGE
+PORT_R = 3862                       # port used by the BGE to read data sent by the EVERTims client
+ENABLE_DEBUG = True                 # enable / disable console log
+ENABLE_RAYTRACING = True            # enable / disable visual feedback on EVERTims client raytracing
+MOVE_UPDATE_THRESHOLD_VALUE = 1.0   # minimum value a listener / source must move to be updated on EVERTims client
+
+
+# get bge controller
+cont = gl.getCurrentController()
+
+# get main evertims module
+gl.evertims = Evertims()
+
+# set debug mode
+gl.evertims.setDebugMode(ENABLE_DEBUG)
+
+# define EVERTs elements: room, listener and source
+scene = gl.getCurrentScene()
+gl.evertims.addRoom(scene.objects['Room'])
+gl.evertims.addSource(scene.objects['Source'])
+gl.evertims.addListener(scene.objects['Listener'])
+
+# limit listener / source position updates in EVERTims Client
+gl.evertims.setMovementUpdateThreshold(MOVE_UPDATE_THRESHOLD_VALUE)
+
+# init write newtork connection (from Blender to EVERTims client, compulsory)
+gl.evertims.initConnection_write(IP_EVERT, PORT_W)
+
+# init read newtork connection (from EVERTims client to Blender, used for visual feedback on EVERTims raytracing in BGE)
+gl.evertims.initConnection_read(IP_LOCAL, PORT_R)
+
+# activate raytracing
+gl.evertims.activateRayTracingFeedback(ENABLE_RAYTRACING)
+
+# check if evertims module is ready to start
+if gl.evertims.isReady():
+    # start EVERTims client
+    gl.evertims.startClientSimulation()
+
+else:
+    # report error
+    print ('\n###### EVERTims SIMULATION ABORTED ###### \nYou should create at least 1 room, 1 listener, 1 source, \nand define EVERTims client parameters.\n')
+
+    # quit game
+    gl.endGame()
+{% endhighlight %}
+            </div>
+        </div>
+    </div>
+
+</section>
