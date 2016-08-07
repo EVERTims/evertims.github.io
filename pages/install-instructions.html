@@ -18,15 +18,15 @@ layout: default
 
 <hr class="secondary"> <!-- add a line-->
 
-<!-- INSTALL EVERTims -->
+<!-- INSTALL RAYTRACING CLIENT -->
+
 <section id="install-evertims" class="bg-primary">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 text-justify">
-                <h2 class="section-heading">Install EVERTims</h2>
+                <h2 class="section-heading">Install EVERTims raytracing client</h2>
                 <br>
-                <p> This section guides you through the installation of EVERT (raytracing library) and EVERTims (raytracing program based on EVERT). The symbol
-                    <kbd>//</kbd> used in this section refers to the root of the EVERTims project.</p>
+                <p> The raytracing client is a C++ standalone: as for today, installing will mean downloading and compiling the sources.</p>
             </div>
         </div>
         <br>
@@ -34,21 +34,24 @@ layout: default
             <div class="row">
                 <div class="col-xs-10">
                     <h3 class="section-heading">
-                        Install EVERTims on OSX
+                        Raytracing client install on OSX
                     </h3>
                 </div>
                 <div class="col-xs-2 text-right">
-                        <img class="left" src="{{ site.baseurl }}/img/logo-apple-white.png" width="30%" alt="" title="" style="float:right;margin:0 10px 0 20px;min-width:30px;" />
+                        <i class="fa fa-apple fa-4x" style="color:rgba(255,255,255, 0.8)"></i>
                 </div>
                 <div class="col-xs-12 text-justify">
-                    <p>With a terminal window, go to the root of you EVERTims project and type:</p>
+                    <p>Manual installation: <br>
+                        Download <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evert/archive/master.zip">evert</a> and <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evertims/archive/master.zip">evertims</a> source code. Open and compile evert Xcode project (i.e. <kbd>build/macos/evert.xcodeproj</kbd>). Same for evertims, making sure both <kbd>evert</kbd> and <kbd>evertims</kbd> folders are located in the same directory (that's where <kbd>evertims.xcodeproj</kbd> expects to find evert).</p>
+                    <p>Automatic installation: <br> With a terminal window, go to were you want EVERTims installed and type:</p>
 
                     <p>{% highlight bash %}
-# create source directory
-mkdir source cd source
+# create raytracing client directory
+mkdir raytracing && cd raytracing
 
 # get EVERT
-svn co https://evert.svn.sourceforge.net/svnroot/evert/branches/dev-spat evert
+curl -sL https://github.com/EVERTims/evert/archive/master.zip | tar xz
+mv evert-master evert
 
 # compile EVERT (Xcode)
 cd evert/build/macos
@@ -56,7 +59,8 @@ xcodebuild
 cd ../../..
 
 # get EVERTims
-svn co https://evertims.svn.sourceforge.net/svnroot/evertims/branches/dev-spat evertims
+curl -sL https://github.com/EVERTims/evertims/archive/master.zip | tar xz
+mv evertims-master evertims
 
 # compile EVERTims (Xcode)
 cd evertims/build/macos
@@ -67,6 +71,21 @@ cd ../../..
 cd ..
 {% endhighlight %}
                     </p>
+                    <p>
+                        Check installation: same place, type: <br>
+                    </p>
+                    <p>
+                        <p>{% highlight bash %}
+./raytracing/evertims/bin/ims
+{% endhighlight %}
+                    </p>
+                    <p>which should result in the following output:</p>
+                    <p>{% highlight bash %}
+No such material file: materials.dat
+Reader object started.
+socket      : OK
+bind        : OK
+{% endhighlight %}  </p>
                 </div>
             </div>
         </div>
@@ -75,74 +94,141 @@ cd ..
             <div class="row">
                 <div class="col-xs-10">
                     <h3 class="section-heading">
-                        Install EVERTims on Windows
+                        Raytracing client install on Linux
                     </h3>
                 </div>
                 <div class="col-xs-2 text-right">
-                        <img class="left" src="{{ site.baseurl }}/img/logo-windows-white.png" width="30%" alt="" title="" style="float:right;margin:0 10px 0 20px;min-width:30px;" />
+                        <i class="fa fa-linux fa-4x" style="color:rgba(255,255,255, 0.8)"></i>
                 </div>
                 <div class="col-xs-12 text-justify">
-                    <p>Heer.. segfault?</p>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="div-bordered-on-primary-bg">
-            <div class="row">
-                <div class="col-xs-10">
-                    <h3 class="section-heading">
-                        Install EVERTims on Linux
-                    </h3>
-                </div>
-                <div class="col-xs-2 text-right">
-                        <img class="left" src="{{ site.baseurl }}/img/logo-linux-white.png" width="30%" alt="" title="" style="float:right;margin:0 10px 0 20px;min-width:30px;" />
-                </div>
-                <div class="col-xs-12 text-justify">
-                    <p>Linux is DIY right?</p>
-                </div>
-            </div>
-        </div>
+                    <p>Manual installation: <br>
+                        Download <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evert/archive/master.zip">evert</a> and <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evertims/archive/master.zip">evertims</a> source code. Compile first evert then evertims.
+                    </p>
+                    <p>Automatic installation: <br> With a terminal window, go to were you want EVERTims installed and type:</p>
 
+                    <p>{% highlight bash %}
+# create raytracing client directory
+mkdir raytracing && cd raytracing
+
+# get EVERT
+curl -sL https://github.com/EVERTims/evert/archive/master.zip | tar xz
+mv evert-master evert
+
+# compile EVERT (Xcode)
+cd evert/build
+cmake .. && make
+cd ../..
+
+# get EVERTims
+curl -sL https://github.com/EVERTims/evertims/archive/master.zip | tar xz
+mv evertims-master evertims
+
+# compile EVERTims (Xcode)
+cd evertims/build
+cmake .. && make
+cd ../..
+
+# back to EVERTims root directory
+cd ..
+{% endhighlight %}
+                    </p>
+                    <p>
+                        Check installation: same place, type: <br>
+                    </p>
+                    <p>
+                        <p>{% highlight bash %}
+./raytracing/evertims/bin/ims
+{% endhighlight %}
+                    </p>
+                    <p>which should result in the following output:</p>
+                    <p>{% highlight bash %}
+No such material file: materials.dat
+Reader object started.
+socket      : OK
+bind        : OK
+{% endhighlight %}  </p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="div-bordered-on-primary-bg">
+            <div class="row">
+                <div class="col-xs-10">
+                    <h3 class="section-heading">
+                        Raytracing client install on Windows
+                    </h3>
+                </div>
+                <div class="col-xs-2 text-right">
+                        <i class="fa fa-windows fa-4x" style="color:rgba(255,255,255, 0.8)"></i>
+                </div>
+                <div class="col-xs-12 text-justify">
+                    <p>(Building)</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <hr class="secondary"> <!-- add a line-->
 
-<!-- INSTALL BLENDER -->
+<!-- INSTALL AURALIZATION -->
+
+<section id="install-puredata" class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-left">
+                <h2 class="section-heading">Install EVERTims auralization engine</h2>
+                <p>Automatic installation: download and install the application for your architecture:
+                </p>
+                <p> <br>
+                <div class="col-xs-4 text-center">
+                    <a class="text-faded link-on-primary-bg" href="{{ site.baseurl }}/pages/building.html">
+                    <i class="fa fa-file-archive-o fa-4x" style="color:rgba(255,255,255, 0.8)"></i>
+                    <p>Windows</p>
+                    </a>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <a class="text-faded link-on-primary-bg" href="https://github.com/{{ site.github_username }}/auralization_engine_evertims/releases/download/0.1/EvertSE.app.zip">
+                    <i class="fa fa-file-archive-o fa-4x" style="color:rgba(255,255,255, 0.8)"></i>
+                    <p>OSX</p>
+                    </a>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <a class="text-faded link-on-primary-bg" href="{{ site.baseurl }}/pages/building.html">
+                    <i class="fa fa-file-archive-o fa-4x" style="color:rgba(255,255,255, 0.8)"></i>
+                    <p>Linux</p>
+                    </a>
+                </div>
+                </p>
+                <p> &nbsp; <br>
+                    Manual installation: <br> Download the <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/auralization_engine_evertims/archive/master.zip">auralization engine source code</a> along with <a class="text-faded link-on-primary-bg" href="https://www.juce.com/get-juce">JUCE Grapefruit</a>. Open the <kbd>.Jucer</kbd> file located in the root of the auralization engine folder with JUCE, and from there load the project in your IDE for compilation (see the <a class="text-faded link-on-primary-bg" href="https://www.juce.com/doc/tutorial_manage_projucer_project">manage your Projucer project page</a> for details).
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="secondary"> <!-- add a line-->
+
+<!-- INSTALL BLENDER ADDON-->
 
 <section id="install-blender" class="bg-primary">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-left">
-                <h2 class="section-heading">Install Blender Addon</h2>
+                <h2 class="section-heading">Install Blender Add-on</h2>
                 <br>
-                <p> This section guides you through the installation of the Blender addon designed for the creation and visual exploration of EVERTims scene.The symbol
-                    <kbd>//</kbd> used in this section refers to the root of the EVERTims project.</p>
-                <p> Start by downloading the <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/game_engine_evertims/archive/master.zip">EVERTims Blender addon</a> from github or go to the root of you EVERTims project and type:</p>
-
-                <p>{% highlight bash %}
-# get Blender addon
-git clone https://github.com/EVERTims/game_engine_evertims.git
-{% endhighlight %}
+                <p> Download and install <a class="text-faded link-on-primary-bg" href="https://www.blender.org/">Blender</a> if need be, then download the <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/game_engine_evertims/archive/master.zip">EVERTims Add-on</a>. Install the add-on from Blender preferences (see e.g. the <a class="text-faded link-on-primary-bg" href="https://www.blender.org/manual/advanced/scripting/python/addons.html#installation-of-a-3rd-party-add-on">Blender manual instructions</a> or one of the methods presented <a class="text-faded link-on-primary-bg" href="http://blender.stackexchange.com/questions/1688/installing-an-addon">here</a> for details). You should end-up with the add-on nested in the Blender 3D view > Toolbox (press <kbd>T</kbd> while hovering the mouse over the 3D view if the toolbox is not displayed):
                 </p>
                 <p>
-                    Now install the addon in Blender, e.g. by following one of the methods presented <a class="text-faded link-on-primary-bg" href="http://blender.stackexchange.com/questions/1688/installing-an-addon">here</a>. You should end-up with the addon nested in the 3D view > Toolbox:
-                </p>
                 <img src="{{ site.baseurl }}/img/blender-addon-screenshot.png" class="img-responsive img-framed-on-primary" alt="">
-            </div>
-        </div>
-    </div>
-</section>
-
-<hr class="secondary"> <!-- add a line-->
-
-<!-- INSTALL PURE DATA -->
-<section id="install-puredata" class="bg-primary">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-left">
-                <h2 class="section-heading">Install Pd</h2>
-                <p> This section guides you through the installation of the Pure Data addon designed for real-time auralization based on EVERTims simulations. </p>
+                </P>
+                <p>
+                    To complete the installation, setup the paths to the &ldquo;Embedded auralization client&rdquo; and the &ldquo;Embedded raytracing client&rdquo; in the add-on panel.
+                </p>
+                <p>
+                    Go to the Tutorial section for an introduction on how to use the framework.
+                </p>
             </div>
         </div>
     </div>

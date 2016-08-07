@@ -389,6 +389,14 @@ code {
     margin-right: auto
 }
 
+.img-framed-on-secondary{
+    border:2px solid $theme-primary;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
 // Contact
 #contact .fa {
     color: $theme-dark;

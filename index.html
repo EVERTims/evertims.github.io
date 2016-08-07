@@ -3,19 +3,27 @@ layout: default
 ---
 
 {% include header.html %}
+
 <!-- ABOUT -->
 <section class="bg-primary" id="about">
     <div class="container">
-        <div class="row">
             <div class="col-lg-12 col-lg-offset-0 text-justify">
                 <h2 class="section-heading">About the EVERTims project</h2>
                 <!-- <hr class="light"> --> <!-- add a line-->
                 <br>
-                <p class="text-faded">EVERTims is an open source framework for real-time auralization. Given a virtual room (geometry and materials), the main EVERTims program simulates how acoustic waves propagates there, from defined sources to listeners objects. The results of this simulation can be used to feed a real-time auralization engine. With the <a class="text-faded link-on-primary-bg" href="https://www.blender.org/">Blender Game Engine</a> being used to create and explore the virtual room, and a <a class="text-faded link-on-primary-bg" href="https://puredata.info/">PureData</a> dataflow handling the auralization, the EVERTims framework enables virtual environment exploration, completing traditional visual rendering with realistic acoustics propagation.</p>
-                <p class="text-faded">EVERTims framework is composed of three components: The EVERTims program itself (simulate audio propagation), a Blender module (design, visualize, and explore virtual environment), and a Pd patch (render real-time auralization based on EVERTims simulated propagation). More on these in the <a class="text-faded link-on-primary-bg" href="{{ site.baseurl }}/#getting-started">Getting Started</a> section.</p>
-                <p class="text-faded">EVERTims was designed by ... at ... .</p>
+                <p class="text-faded">EVERTims is an open source framework for 3D models auralization, providing real-time feed-back on the would be acoustics of any given room during its creation.
+                <p>
+                <p class="text-faded">
+                The framework is based on three components: a <a class="text-faded link-on-primary-bg" href="https://www.blender.org/">Blender</a> add-on, a C++ raytracing client and a <a class="text-faded link-on-primary-bg" href="https://www.juce.com/">JUCE</a> auralization engine. While designing the 3D room model in Blender, the add-on continuously uploads geometry and materials details to the raytracing client. Based on these information, the client simulates how acoustic waves propagates there, from sources to listeners objects positioned in the Blender scene. The results of this simulation are then sent to the auralization engine that reconstructs the Ambisonic sound field as experienced at any given listener's position for binaural listening. The framework also takes advantage of the Blender Game Engine to support in-game auralization for a final interactive exploration of the designed model.
+                </p>
+                <!-- <a class="text-faded link-on-primary-bg" href="{{ site.baseurl }}/#getting-started">Getting Started</a> -->
+                <p class="text-faded">EVERTims was originally developed as a collaboration between <a class="text-faded link-on-primary-bg" href="https://www.limsi.fr/fr/recherche/aa/menuitem-aa-themes-fr/aa-item-theme-sonespace">LIMSI/CNRS</a> and the <a class="text-faded link-on-primary-bg" href="https://mediatech.aalto.fi/en/">TKK/Department of Media Technology</a>. It has now become a joint effort between researchers there and at the <a class="text-faded link-on-primary-bg" href="http://www.ircam.fr/">IRCAM</a> institute.
+                </p>
             </div>
-        </div>
+
+            <div class="embed-responsive embed-responsive-16by9 col-xs-12 text-center">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/G3OfKG6xHxs" frameborder="0" allowfullscreen></iframe>
+            </div>
     </div>
 </section>
 
@@ -23,14 +31,15 @@ layout: default
 <section class="bg-secondary" id="feature-raytracing">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-sm-4 text-left">
-                <h2 class="section-heading">Raytracing</h2>
-                <p>Lorem ipsum</p>
+            <div class="col-xs-9 text-left text-justify">
+                <h2 class="section-heading">Raytracing Client</h2>
+                <p>
+                    The raytracing client is a C++ real-time beam tracing standalone, based on the EVERT library that provides a beam-tree for any given source / geometry configuration which maximum depth depends on a required reflection order. It uses an iterative refinement procedure: whenever a change of geometry or sound source position occurs, an approximate beam-tree is constructed up to the minimum (parametrized) allowed reflection order. The paths visible by the listener are then sent to the auralization engine while the system continues to compute the solution up to the next reflection order until the chosen maximum order is reached.
+                </p>
             </div>
-            <div class="col-lg-8 col-sm-8 text-center">
-                <div class="embed-responsive embed-responsive-16by9 col-xs-12 text-center">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/G3OfKG6xHxs" frameborder="0" allowfullscreen></iframe>
-                </div>
+            <div class="col-xs-3 text-center">
+                <h2 class="section-heading">&nbsp;</h2>
+                <img src="{{ site.baseurl }}/img/front-illustration-raytracing.png" class="img-responsive" alt="">
             </div>
         </div>
     </div>
@@ -38,14 +47,14 @@ layout: default
 <section class="bg-primary" id="feature-auralization">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-sm-8 text-center">
-                <div class="embed-responsive embed-responsive-16by9 col-xs-12 text-center">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/G3OfKG6xHxs" frameborder="0" allowfullscreen></iframe>
-                </div>
+            <div class="col-xs-3 text-center">
+                <img src="{{ site.baseurl }}/img/front-illustration-auralization.png" class="img-responsive" alt="">
             </div>
-            <div class="col-lg-4 col-sm-4 text-right">
-                <h2 class="section-heading">Auralization</h2>
-                <p>Lorem ipsum</p>
+            <div class="col-xs-9 text-right text-justify">
+                <h2 class="section-heading">Auralization Engine</h2>
+                <p>
+                    The auralization engine also comes as a C++ standalone, developed with the JUCE framework. From the raytracing client, it receives direction of arrivals and paths length for each beam (impinging the listener), along with octave band absorption coefficients relative to the materials on which the beam bounced during its propagation. To each beam is associated a new audio stream, tapped-out of a delay line (further delayed and attenuated as the aforementioned path length grows) and encoded on a set of Ambisonic channels (with spherical harmonics weights issued from its direction of arrival) before being summed with its peers. Octave band filters are applied prior to the Ambisonic encoding to account for beam-specific absorption. The resulting Ambisonic field is then decoded on a set of virtual speaker approach for binaural listening.
+                </p>
             </div>
         </div>
     </div>
@@ -53,14 +62,13 @@ layout: default
 <section class="bg-secondary" id="feature-visualization">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-sm-4 text-left">
-                <h2 class="section-heading">Visualization</h2>
-                <p>Lorem ipsum</p>
+            <div class="col-xs-9 text-left text-justify">
+                <h2 class="section-heading">Blender Add-on</h2>
+                <p>The framework exploit Blender for its main interface. The EVERTims add-on sits on Blender tool-shelf, allowing to define 3D objects as EVERTims elements (room, source, listener, etc.) and launch both raytracing client and auralization engine (as python subprocesses). Any user modification on room's mesh and material triggers automatic uploads to the raytracing client, as do sources and listeners re-locations and re-orientations. The add-on seamlessly runs in the Game Engine to provide real-time auralization during the final exploration of the virtual model.</p>
             </div>
-            <div class="col-lg-8 col-sm-8 text-center">
-                <div class="embed-responsive embed-responsive-16by9 col-xs-12 text-center">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/G3OfKG6xHxs" frameborder="0" allowfullscreen></iframe>
-                </div>
+            <div class="col-xs-3 text-center">
+                <h2 class="section-heading">&nbsp;</h2>
+                <img src="{{ site.baseurl }}/img/front-illustration-blender-addon.png" class="img-responsive" alt="">
             </div>
         </div>
     </div>
@@ -80,12 +88,11 @@ layout: default
             </div>
         </div>
     </div>
-</section>
     <div class="container-fluid">
         <div class="row no-gutter">
-            <div class="col-lg-4 col-sm-4">
+            <div class="col-sm-4">
                 <a href="{{ site.baseurl }}/pages/building.html" class="portfolio-box">
-                    <img src="{{ site.baseurl }}/img/project-page.jpg" class="img-responsive" alt="">
+                    <img src="{{ site.baseurl }}/img/project-preview-1.png" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
@@ -98,9 +105,9 @@ layout: default
                     </div>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-4">
+            <div class="col-sm-4">
                 <a href="{{ site.baseurl }}/pages/building.html" class="portfolio-box">
-                    <img src="{{ site.baseurl }}/img/project-page.jpg" class="img-responsive" alt="">
+                    <img src="{{ site.baseurl }}/img/project-preview-2.png" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
@@ -113,9 +120,9 @@ layout: default
                     </div>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-4">
+            <div class="col-sm-4">
                 <a href="{{ site.baseurl }}/pages/building.html" class="portfolio-box">
-                    <img src="{{ site.baseurl }}/img/project-page.jpg" class="img-responsive" alt="">
+                    <img src="{{ site.baseurl }}/img/project-preview-3.png" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
@@ -132,6 +139,6 @@ layout: default
     </div>
 </section>
 
-{% include licence.html %}
+{% include license.html %}
 {% include references.html %}
 {% include contact.html %}

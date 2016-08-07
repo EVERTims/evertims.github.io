@@ -44,3 +44,7 @@ $theme-dark: #222;
         "mixins",
         "base"
 ;
+
+.table th, .table td {
+     border-top: none !important;
+ }

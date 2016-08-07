@@ -6,11 +6,21 @@ layout: default
 <section id="api-top" class="bg-primary">
     <div class="container">
         <div class="row">
-            <div class="col-xs-3 col-xs-offset-2 text-center">
-                <a href="#api-evertims" class="btn btn-primary-2 btn-xl page-scroll">EVERTims API</a>
+            <div class="col-xs-12 text-justify">
+                <p>
+                    Thanks to the Blender add-on handling both the EVERTims raytracing client and the Evertims Python module from the GUI, only developers should have require hereafter information. <br> &nbsp; <br>
+                </p>
             </div>
-            <div class="col-xs-3 col-xs-offset-2 text-center">
-                <a href="#api-blender" class="btn btn-primary-2 btn-xl page-scroll">Blender API</a>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-1 text-center">
+                <p> <a href="#api-raytracing-cmd" class="btn btn-primary-2 btn-xl">Raytracing - command line</a> </p>
+            </div>
+            <div class="col-md-3 col-md-offset-1 text-center">
+                <p> <a href="#api-raytracing-osc" class="btn btn-primary-2 btn-xl">Raytracing - OSC messages</a> </p>
+            </div>
+            <div class="col-md-3 col-md-offset-1 text-center">
+                <p> <a href="#api-blender" class="btn btn-primary-2 btn-xl">Add-on Python API</a> </p>
             </div>
         </div>
     </div>
@@ -18,16 +28,17 @@ layout: default
 
 <hr class="secondary"> <!-- add a line-->
 
-<!-- EVERTims API -->
+<!-- Raytracing client, command line API -->
 
-<section id="api-evertims" class="bg-primary">
+<section id="api-raytracing-cmd" class="bg-primary">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 text-left">
-                <h2 class="section-heading">EVERTims API</h2>
+            <div class="col-xs-12 text-justify">
+                <h2 class="section-heading">Raytracing client - Command line arguments</h2>
             </div>
             <div class="col-xs-12 text-left ">
-                <table style="width:100%;">
+                <p>
+                <table class="table">
                 <tr>
                     <td>NAME</td>
                     <td></td>
@@ -54,11 +65,11 @@ layout: default
                 </tr>
                 <tr>
                     <td><code>-v &lt;pattern/host:port&gt;<code></td>
-                    <td>the &lt;host&gt; &lt;port&gt; to write in the “VirChor” protocol</td>
+                    <td>the &lt;host&gt; &lt;port&gt; to write in the &ldquo;VirChor&rdquo; protocol</td>
                 </tr>
                 <tr>
                     <td><code>-a &lt;pattern/host:port&gt;<code></td>
-                    <td>the &lt;host&gt; &lt;port&gt; to write reflection data for auralization in the “Markus” protocol</td>
+                    <td>the &lt;host&gt; &lt;port&gt; to write reflection data for auralization in the &ldquo;Markus&rdquo; protocol</td>
                 </tr>
                 <tr>
                     <td><code>-m &lt;materialfile&gt;<code></td>
@@ -81,11 +92,12 @@ layout: default
                     <td>read the room geometry from the &lt;roomfile&gt;. DOESN’T WORK AT THE MOMENT.</td>
                 </tr>
             </table>
+            </p>
             </div>
-            <div class="col-xs-12 text-left ">
+            <div class="col-xs-12 text-justify ">
                 <p>
                     <br>
-                    <br> In the above pattern is a regular expression and is matched against the name of the solution formed as ‘source_name-listener_name’. If the pattern is omitted everything matches. Such that command line:
+                    <br> In the above pattern is a regular expression and is matched against the name of the solution formed as &ldquo;source_name-listener_name&rdquo;. If the pattern is omitted everything matches. Such that command line:
                 </p>
                 <p>{% highlight bash %} ./ims –p ‘listener_0/’ –a waves:10234 –v ‘source_[03].*listener_1/localhost:1980’ {% endhighlight %}
                 </p>
@@ -93,12 +105,97 @@ layout: default
                     would make the following:
                     <ul>
                         <li>print the solution for all the sound sources for listener_0</li>
-                        <li>send to auralization all the reflection paths for all the listeners. The </li>
-                        <li>messages are sent to the port 10234 of computer named ‘waves’.</li>
-                        <li>send to VirChor the reflection paths of sound sources ‘source_0’ and ‘source_3’ for listener_1. The messages are sent to port 1980 at the local computer.</li>
+                        <li>send to auralization all the reflection paths for all the listeners. The messages are sent to the port 10234 of computer named &ldquo;waves&rdquo;.</li>
+                        <li>send to VirChor the reflection paths of sound sources &ldquo;source_0&rdquo; and &ldquo;source_3&rdquo; for listener_1. The messages are sent to port 1980 at the local computer.</li>
                     </ul>
                 </p>
             </div>
+        </div>
+    </div>
+</section>
+
+<hr class="secondary"> <!-- add a line-->
+
+<!-- Raytracing client, OSC messages format -->
+
+<section id="api-raytracing-osc" class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-justify">
+                <p> <h2 class="section-heading">Raytracing client - OSC messages format</h2> </p>
+            </div>
+            <div class="col-xs-12 text-justify">
+                <p> <h3 class="section-heading">Reader (messages from Blender add-on to raytracing client)</h2> </p>
+                <p>
+                <table class="table">
+                <tr>
+                    <td><code>/face id mat_id p0_x p0_y p0_z p1_x p1_y ... p3_y p3_z<code></td>
+                    <td>update face &lt;id&gt; vertices (quad) coordinates and material</td>
+                </tr>
+                <tr>
+                    <td><code>/facefinished<code></td>
+                    <td>indicate room geometry update is complete (triggers new beam tree calculation)</td>
+                </tr>
+                <tr>
+                    <td><code>/source id m00 m10 m20 m30 m01 ... m33 <code></td>
+                    <td>update source &lt;id&gt; position / rotation, with mij the coefficient of its 4x4 homogeneous matrix</td>
+                </tr>
+                <tr>
+                    <td><code>/listener id m00 m10 m20 m30 m01 ... m33 <code></td>
+                    <td>update listener &lt;id&gt; position / rotation, with mij the coefficient of its 4x4 homogeneous matrix</td>
+                </tr>
+                </table>
+                </p>
+            </div>
+
+            <p> &nbsp; </p> <!-- linebreak -->
+
+            <div class="col-xs-12 text-justify">
+                <p> <h3 class="section-heading">Writer Raytracing (messages from the raytracing client to the Blender add-on)</h2> </p>
+                <p>
+                <table class="table">
+                <tr>
+                    <td><code>/line_on id x0 y0 z0 x1 y1 z1<code></td>
+                    <td>active ray of id &lt;id&gt; from (x0,y0,z0) to (x1,y1,z1)</td>
+                </tr>
+                <tr>
+                    <td><code>/line_off id<code></td>
+                    <td>ray &lt;id&gt; no longer active (<code>/line_on</code> is likely to reuse this id latter for a new ray)</td>
+                </tr>
+                </table>
+                </p>
+            </div>
+
+            <p> &nbsp; </p> <!-- linebreak -->
+
+            <div class="col-xs-12 text-justify">
+                <p> <h3 class="section-heading">Writer Auralization (messages from the raytracing client to the auralization engine)</h2> </p>
+                <p>
+                <table class="table">
+                <tr>
+                    <td><code>/source source_id x y z<code></td>
+                    <td>source &lt;id&gt; position</td>
+                </tr>
+                <tr>
+                    <td><code>/listener listener_id x y z<code></td>
+                    <td>listener &lt;id&gt; position</td>
+                </tr>
+                <tr>
+                    <td><code>/in path_id order r1_x r1_y r1_z rN_x rN_y rN_z dist abs_0 abs_1 ... abs_9<code></td>
+                    <td>new path &lt;path_id&gt; corresponding to a reflection of order &lt;order&gt;. first reflection point at (r1_x, r1_y, r1_z), last at (rN_x, rN_y, rN_z) for DOA estimation. dist is the length of the whole reflection path. abs_M is the absorption coefficient for the octave band M. &lt;path_id&gt; is guaranteed to be the same for a reflection path while it is visible.</td>
+                </tr>
+                <tr>
+                    <td><code>/upd path_id order r1_x r1_y r1_z rN_x rN_y rN_z dist abs_0 abs_1 ... abs_9<code></td>
+                    <td>updated path &lt;path_id&gt;</td>
+                </tr>
+                <tr>
+                    <td><code>/out path_id<code></td>
+                    <td>removed path &lt;path_id&gt;</td>
+                </tr>
+                </table>
+                </p>
+            </div>
+
         </div>
     </div>
 </section>
@@ -110,12 +207,12 @@ layout: default
 <section id="api-blender" class="bg-primary">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 text-left">
-                <h2 class="section-heading">Blender module API</h2>
+            <div class="col-xs-12 text-justify">
+                <h2 class="section-heading">Blender Evertims module - Python API</h2>
             </div>
             <div class="col-xs-12 text-left">
-
-                <table style="width:100%">
+                <p>
+                <table class="table">
                     <col width="30%">
                     <col width="70%">
                     <tr>
@@ -124,15 +221,15 @@ layout: default
                     </tr>
                     <tr>
                         <td><code>addRoom(obj)<code></td>
-                        <td>Add obj (<i>type: KX_GameObject</i>) as EVERTims room in local dictionnary</td>
+                        <td>Add obj (<i>type: KX_GameObject</i>) as EVERTims room in local dictionary</td>
                     </tr>
                     <tr>
                         <td><code>addSource(obj)<code></td>
-                        <td>Add obj (<i>type: KX_GameObject</i>) as EVERTims source in local dictionnary</td>
+                        <td>Add obj (<i>type: KX_GameObject</i>) as EVERTims source in local dictionary</td>
                     </tr>
                     <tr>
                         <td><code>addListener(obj)<code></td>
-                        <td>Add obj (<i>type: KX_GameObject</i>) as EVERTims listener in local dictionnary</td>
+                        <td>Add obj (<i>type: KX_GameObject</i>) as EVERTims listener in local dictionary</td>
                     </tr>
                     <tr>
                         <td><code>initConnection_read(ip, port)<code></td>
@@ -151,8 +248,8 @@ layout: default
                         <td>Upload Room, Source, and Listener information to EVERTims client (<i>objType type: String</i>)</td>
                     </tr>
                     <tr>
-                        <td><code>setMovementUpdateThreshold(threshold)<code></td>
-                        <td>Define a threshold value to limit listener / source update to EVERTims client (<i>threshold type: Float</i>)</td>
+                        <td><code>setMovementUpdateThreshold(thresholdLoc, thresholdRot)<code></td>
+                        <td>Define a threshold value (loc and rot) to limit listener / source update to EVERTims client (<i>thresholdLoc, thresholdRot type: Float</i>)</td>
                     </tr>
                     <tr>
                         <td><code>startClientSimulation()<code></td>
@@ -167,6 +264,7 @@ layout: default
                         <td>Enable / disable visual feedback on EVERTims raytracing, will init read socket to receive raytracing messages if set to True</td>
                     </tr>
                 </table>
+                </p>
             </div>
         </div>
     </div>
@@ -175,7 +273,7 @@ layout: default
         <div class="row">
             <div class="col-xs-12 text-justify">
                 <p>
-                Example python script (run in BGE) that defines Blender KX_GameObjects 'Room', 'Source', and 'Listener' as EVERTims room, source and listener and start EVERTims simulation:</p>
+                Example python script (runs in BGE) that defines Blender KX_GameObjects 'Room', 'Source', and 'Listener' as EVERTims room, source and listener and starts EVERTims simulation:</p>
             </div>
             <div class="col-xs-12 text-left">
 {% highlight python %}
@@ -183,14 +281,14 @@ from bge import logic as gl
 from .evertims import Evertims
 
 
-IP_EVERT = 'localhost'              # EVERTims client IP address
-PORT_W = 3858                       # port used by EVERTims client to read data sent by the BGE
-IP_LOCAL = 'localhost'              # local host (this computer) IP address, running the BGE
-PORT_R = 3862                       # port used by the BGE to read data sent by the EVERTims client
-ENABLE_DEBUG = True                 # enable / disable console log
-ENABLE_RAYTRACING = True            # enable / disable visual feedback on EVERTims client raytracing
-MOVE_UPDATE_THRESHOLD_VALUE = 1.0   # minimum value a listener / source must move to be updated on EVERTims client
-
+IP_EVERT = 'localhost'                  # EVERTims client IP address
+PORT_W = 3858                           # port used by EVERTims client to read data sent by the BGE
+IP_LOCAL = 'localhost'                  # local host (this computer) IP address, running the BGE
+PORT_R = 3862                           # port used by the BGE to read data sent by the EVERTims client
+ENABLE_DEBUG = True                     # enable / disable console log
+ENABLE_RAYTRACING = True                # enable / disable visual feedback on EVERTims client raytracing
+MOVE_UPDATE_THRESHOLD_VALUE_LOC = 1.0   # minimum value a listener / source must move to be updated on EVERTims client (m)
+MOVE_UPDATE_THRESHOLD_VALUE_ROT = 5.0   # minimum value a listener / source must rotate to be updated on EVERTims client (deg)
 
 # get bge controller
 cont = gl.getCurrentController()
@@ -208,12 +306,12 @@ gl.evertims.addSource(scene.objects['Source'])
 gl.evertims.addListener(scene.objects['Listener'])
 
 # limit listener / source position updates in EVERTims Client
-gl.evertims.setMovementUpdateThreshold(MOVE_UPDATE_THRESHOLD_VALUE)
+gl.evertims.setMovementUpdateThreshold(MOVE_UPDATE_THRESHOLD_VALUE_LOC, MOVE_UPDATE_THRESHOLD_VALUE_ROT)
 
-# init write newtork connection (from Blender to EVERTims client, compulsory)
+# init write network connection (from Blender to EVERTims client, compulsory)
 gl.evertims.initConnection_write(IP_EVERT, PORT_W)
 
-# init read newtork connection (from EVERTims client to Blender, used for visual feedback on EVERTims raytracing in BGE)
+# init read network connection (from EVERTims client to Blender, used for visual feedback on EVERTims raytracing in BGE)
 gl.evertims.initConnection_read(IP_LOCAL, PORT_R)
 
 # activate raytracing
