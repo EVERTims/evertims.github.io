@@ -42,49 +42,34 @@ layout: default
                 </div>
                 <div class="col-xs-12 text-justify">
                     <p>Manual installation: <br>
-                        Download <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evert/archive/master.zip">evert</a> and <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evertims/archive/master.zip">evertims</a> source code. Open and compile evert Xcode project (i.e. <kbd>build/macos/evert.xcodeproj</kbd>). Same for evertims, making sure both <kbd>evert</kbd> and <kbd>evertims</kbd> folders are located in the same directory (that's where <kbd>evertims.xcodeproj</kbd> expects to find evert).</p>
+                        Download or clone <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evertims/archive/master.zip">EVERTims source code</a>. Open and compile evert (i.e. <kbd>lib/libevert/build/macos/evert.xcodeproj</kbd>) then evertims (i.e. <kbd>build/macos/evert.xcodeproj</kbd>) Xcode projects.</p>
                     <p>Automatic installation: <br> With a terminal window, go to were you want EVERTims installed and type:</p>
 
                     <p>{% highlight bash %}
-# create raytracing client directory
-mkdir raytracing && cd raytracing
-
-# get EVERT
-curl -sL https://github.com/EVERTims/evert/archive/master.zip | tar xz
-mv evert-master evert
-
-# compile EVERT (Xcode)
-cd evert/build/macos
-xcodebuild
-cd ../../..
-
 # get EVERTims
 curl -sL https://github.com/EVERTims/evertims/archive/master.zip | tar xz
 mv evertims-master evertims
 
-# compile EVERTims (Xcode)
-cd evertims/build/macos
-xcodebuild
-cd ../../..
-
-# back to EVERTims root directory
-cd ..
+# compile EVERTims and EVERT (Xcode)
+./evertims/build/build_macos.sh
 {% endhighlight %}
                     </p>
                     <p>
-                        Check installation: same place, type: <br>
+                        Check installation: From EVERTims root directory, type: <br>
                     </p>
                     <p>
                         <p>{% highlight bash %}
-./raytracing/evertims/bin/ims
+./evertims/resources/startEvertims.sh
 {% endhighlight %}
                     </p>
                     <p>which should result in the following output:</p>
                     <p>{% highlight bash %}
-No such material file: materials.dat
-Reader object started.
+Material: penkki already in the database.
+Initializing new writer. Path pattern = listener_1. Order: 0 - 1048576. Amount: 1048576. Host = localhost:3862
 socket      : OK
 bind        : OK
+socket      : OK
+...
 {% endhighlight %}  </p>
                 </div>
             </div>
@@ -102,34 +87,18 @@ bind        : OK
                 </div>
                 <div class="col-xs-12 text-justify">
                     <p>Manual installation: <br>
-                        Download <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evert/archive/master.zip">evert</a> and <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evertims/archive/master.zip">evertims</a> source code. Compile first evert then evertims.
+                        Download <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/evertims/archive/master.zip">EVERTims source code</a>. Compile first the evert library (in evertims/lib/libevert) then evertims itself.
                     </p>
                     <p>Automatic installation: <br> With a terminal window, go to were you want EVERTims installed and type:</p>
 
                     <p>{% highlight bash %}
-# create raytracing client directory
-mkdir raytracing && cd raytracing
-
-# get EVERT
-curl -sL https://github.com/EVERTims/evert/archive/master.zip | tar xz
-mv evert-master evert
-
-# compile EVERT (Xcode)
-cd evert/build
-cmake .. && make
-cd ../..
 
 # get EVERTims
 curl -sL https://github.com/EVERTims/evertims/archive/master.zip | tar xz
 mv evertims-master evertims
 
-# compile EVERTims (Xcode)
-cd evertims/build
-cmake .. && make
-cd ../..
-
-# back to EVERTims root directory
-cd ..
+# compile EVERT and EVERTims
+./evertims/build/build_linux.sh
 {% endhighlight %}
                     </p>
                     <p>
@@ -137,15 +106,17 @@ cd ..
                     </p>
                     <p>
                         <p>{% highlight bash %}
-./raytracing/evertims/bin/ims
+./evertims/resources/startEvertims.sh
 {% endhighlight %}
                     </p>
                     <p>which should result in the following output:</p>
                     <p>{% highlight bash %}
-No such material file: materials.dat
-Reader object started.
+Material: penkki already in the database.
+Initializing new writer. Path pattern = listener_1. Order: 0 - 1048576. Amount: 1048576. Host = localhost:3862
 socket      : OK
 bind        : OK
+socket      : OK
+...
 {% endhighlight %}  </p>
                 </div>
             </div>
