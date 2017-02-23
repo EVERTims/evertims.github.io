@@ -189,16 +189,46 @@ socket      : OK
             <div class="col-lg-12 text-left">
                 <h2 class="section-heading">Install Blender Add-on</h2>
                 <br>
-                <p> Download and install <a class="text-faded link-on-primary-bg" href="https://www.blender.org/">Blender</a> if need be, then download the <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/game_engine_evertims/archive/master.zip">EVERTims Add-on</a>. Install the add-on from Blender preferences (see e.g. the <a class="text-faded link-on-primary-bg" href="https://www.blender.org/manual/advanced/scripting/python/addons.html#installation-of-a-3rd-party-add-on">Blender manual instructions</a> or one of the methods presented <a class="text-faded link-on-primary-bg" href="http://blender.stackexchange.com/questions/1688/installing-an-addon">here</a> for details). You should end-up with the add-on nested in the Blender 3D view > Toolbox (press <kbd>T</kbd> while hovering the mouse over the 3D view if the toolbox is not displayed):
+                <p> Download and install <a class="text-faded link-on-primary-bg" href="https://www.blender.org/">Blender</a> if need be, then download the <a class="text-faded link-on-primary-bg" href="https://github.com/EVERTims/game_engine_evertims/archive/master.zip">EVERTims Add-on</a>. Open Blender preferences, go to the ‘‘Add-ons’’ tab, and click on the ‘‘Install from File...’’ button. in the navigation menu that pops up, locate and double click on the .zip file of the EVERTims Add-on you just downloaded (without unzipping it). Back to the Add-ons tab, search for the EVERTims add-on in the list and enable it:
                 </p>
+            </div>
+            <div align="middle" class="col-xs-12">
+                <p>
+                <img src="{{ site.baseurl }}/img/blender-addon-install-1.png" class="img-responsive img-framed-on-primary" alt="">
+                </p>
+            </div>
+            <div align="middle" class="col-xs-12">
+                <p>
+                <img src="{{ site.baseurl }}/img/blender-addon-install-2.png" class="img-responsive img-framed-on-primary" alt="">
+                </p>
+            </div>
+            <div align="middle" class="col-xs-12">
+                <p>
+                <img src="{{ site.baseurl }}/img/blender-addon-install-3.png" class="img-responsive img-framed-on-primary" alt="">
+                </p>
+            </div>
+
+            <div class="col-lg-12 text-left">
+                <p> You should end-up with the add-on nested in the Blender 3D view > Toolbox (press <kbd>T</kbd> while hovering the mouse over the 3D view if the toolbox is not displayed): 
+                </p>
+            </div>
+            <div align="middle" class="col-xs-12">
                 <p>
                 <img src="{{ site.baseurl }}/img/blender-addon-screenshot.png" class="img-responsive img-framed-on-primary" alt="">
-                </P>
-                <p>
-                    To complete the installation, setup the paths to the &ldquo;Embedded auralization client&rdquo;, the &ldquo;Embedded raytracing client&rdquo;, and its material file (<kbd>evertims/resources/materials.dat</kbd>) in the add-on panel. Saving this scene as the Blender startup file (Ctrl+U) saves these settings as well.
                 </p>
+            </div>
+
+            <div class="col-lg-12 text-left">
                 <p>
-                    Go to the Tutorial section for an introduction on how to use the framework.
+                    To complete the installation, setup the paths to the &ldquo;Embedded auralization client&rdquo;, the &ldquo;Embedded raytracing client&rdquo;, and its material file (<kbd>evertims/resources/materials.dat</kbd>) in the add-on panel, e.g. on MacOS:
+                </p>
+                <div align="middle" class="col-xs-12">
+                    <p>
+                    <img src="{{ site.baseurl }}/img/blender-addon-install-4.png" class="img-responsive img-framed-on-primary" alt="">
+                    </p>
+                </div>                
+                <p>
+                    Saving this scene as the Blender startup file (Ctrl+U) saves these settings as well. Next, go to the <a class="text-faded link-on-primary-bg" href="{{ site.baseurl }}/pages/tutorial.html">Tutorials</a> section for an introduction on how to use the framework.
                 </p>
             </div>
         </div>
