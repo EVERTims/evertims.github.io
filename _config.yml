@@ -7,7 +7,7 @@ description: > # this means to ignore newlines until "baseurl:"
 # baseurl is defined to match GitHub's path while handling relative links
 # during local tests with Jekyll server with the --baseurl '' option.
 # (see https://github.com/jekyll/jekyll/issues/332#issuecomment-18952908)
-baseurl: "/website"
+baseurl: ""
 url: "" # the base hostname & protocol for your site
 
 # twitter_username: volnyio
