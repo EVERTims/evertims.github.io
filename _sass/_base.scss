@@ -60,9 +60,8 @@ p {
 }
 
 .text-faded {
-    color: rgba(white, .7);
+    color: $white-smoke;
 }
-
 
 section {
     padding: 100px 0;
@@ -84,13 +83,13 @@ aside {
     @include sans-serif-font;
     @include transition-all;
     .navbar-header .navbar-brand {
-        color: white;
+        color: $white-smoke;
         @include sans-serif-font;
         font-weight: 700;
         text-transform: uppercase;
         &:hover,
         &:focus {
-            color: darken($theme-primary, 10%);
+            color: white;
         }
     }
     .nav {
@@ -100,9 +99,9 @@ aside {
                 // text-transform: uppercase;
                 font-weight: 700;
                 font-size: 14px;
-                color: white;
+                color: $white-smoke;
                 &:hover {
-                    color: $theme-primary;
+                    color: white;
                 }
             }
             &.active {
@@ -121,7 +120,7 @@ aside {
         background-color: rgba(black, 0.7);
         border-color: rgba(white, .3);
         .navbar-header .navbar-brand {
-            color: rgba(white, .7);
+            color: $white-smoke;
             &:hover,
             &:focus {
                 color: white;
@@ -129,7 +128,7 @@ aside {
         }
         .nav > li > a,
         .nav > li > a:focus {
-            color: rgba(white, .7);
+            color: $white-smoke;
             &:hover {
                 color: white;
             }
@@ -316,7 +315,7 @@ header {
 
 .div-bordered-on-primary-bg {
     border-radius: 5px;
-    border: 2px solid rgba(white, .7);
+    border: 2px solid $white-smoke;
     padding: 20px;
 }
 
@@ -331,13 +330,12 @@ header {
 }
 
 // Hyperlink Styles
-// Button Styles
 .link-on-primary-bg {
-    @include link-variant(rgba(white, .7), rgba(245, 225, 10, 0.8));
+    @include link-variant($white-smoke, $hover-color-primary);
 }
 
 .link-on-secondary-bg {
-    @include link-variant(black, rgba(205, 30, 10, 1.0));
+    @include link-variant(black, $hover-color-secondary);
 }
 
 // Button Styles
@@ -346,13 +344,11 @@ header {
 }
 
 .btn-primary {
-    @include button-variant(black, rgba(245, 225, 10, 0.8), black);
-    // @include button-variant(black, rgba(140, 235, 70, 0.8), black);
+    @include button-variant(black, $hover-color-primary, black);
 }
 
 .btn-primary-2 {
-    @include button-variant(rgba(white, .7), rgba(white, .05), white);
-    // @include button-variant(black, rgba(140, 235, 70, 0.8), black);
+    @include button-variant($white-smoke, rgba(white, .05), white);
 }
 
 .btn {
@@ -367,10 +363,11 @@ header {
     padding: 15px 30px;
 }
 
-// table, th, td {
-//     // border: 1px solid rgba(white,0.7);
-//     border-collapse: separate;
-// }
+// remove lines from table
+.table th, .table td {
+     border-top: none !important;
+ }
+
 th, td {
     padding-top: 20px;
 }
@@ -378,11 +375,10 @@ th, td {
 code {
     color: white;
     background: transparent;
-
 }
 
 .img-framed-on-primary{
-    border:2px solid rgba(white, .7);
+    border:2px solid $white-smoke;
     border-radius: 10px;
     display: block;
     margin-left: auto;
