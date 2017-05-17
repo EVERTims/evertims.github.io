@@ -9,9 +9,8 @@ body {
 }
 
 hr {
-    border-color: $theme-primary;
-    border-width: 3px;
-    max-width: 50px;
+    border: 0px;
+    margin-top : -15px;
 }
 
 hr.light {
@@ -19,7 +18,7 @@ hr.light {
 }
 
 hr.secondary {
-    border-color: $theme-secondary;
+    border-color: transparent;
 }
 
 a {
