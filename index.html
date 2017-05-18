@@ -19,7 +19,11 @@ layout: default
             <p class="text-faded">
                 The framework is based on three components: a <a class="text-faded link-on-primary-bg" href="https://www.blender.org/">Blender</a> add-on, a C++ raytracing client and a <a class="text-faded link-on-primary-bg" href="https://www.juce.com/">JUCE</a> auralization engine. While designing the 3D room model in Blender, the add-on continuously uploads geometry and materials details to the raytracing client. Based on these information, the client simulates how acoustic waves propagates there, from sources to listeners objects positioned in the Blender scene. The results of this simulation are then sent to the auralization engine that reconstructs the Ambisonic sound field as experienced at any given listener's position for binaural listening. The framework also takes advantage of the Blender Game Engine to support in-game auralization for a final interactive exploration of the designed model.
             </p>
-            <!-- <a class="text-faded link-on-primary-bg" href="{{ site.baseurl }}/#getting-started">Getting Started</a> -->
+            
+            <div class="hidden-xs">
+            <img src="{{ site.baseurl }}/img/architecture-framework.png" class="img-responsive" alt="">
+            </div>
+
             <p class="text-faded">
                 EVERTims was originally developed as a collaboration between <a class="text-faded link-on-primary-bg" href="https://www.limsi.fr/fr/recherche/aa/menuitem-aa-themes-fr/aa-item-theme-sonespace">LIMSI/CNRS</a> and the <a class="text-faded link-on-primary-bg" href="https://mediatech.aalto.fi/en/">TKK/Department of Media Technology</a>. It has now become a joint effort between researchers there and at the <a class="text-faded link-on-primary-bg" href="http://www.ircam.fr/">IRCAM</a> institute.
             </p>
