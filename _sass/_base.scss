@@ -395,7 +395,10 @@ code {
 
 // Contact
 #contact .fa {
-    color: $theme-dark;
+    color: $white-smoke;
+    &:hover {
+        color: white;
+    }
     font-size: 4em;
 }
 
