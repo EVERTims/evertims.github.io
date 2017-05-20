@@ -70,7 +70,7 @@ layout: default
             <div class="col-xs-9 text-right text-justify">
                 <h2 class="section-heading">Auralization Engine</h2>
                 <p>
-                    The auralization engine also comes as a C++ standalone, developed with the JUCE framework. From the raytracing client, it receives direction of arrivals and paths length for each beam (impinging the listener), along with octave band absorption coefficients relative to the materials on which the beam bounced during its propagation. To each beam is associated a new audio stream, tapped-out of a delay line (further delayed and attenuated as the aforementioned path length grows) and encoded on a set of Ambisonic channels (with spherical harmonics weights issued from its direction of arrival) before being summed with its peers. Octave band filters are applied prior to the Ambisonic encoding to account for beam-specific absorption. The resulting Ambisonic field is then decoded on a set of virtual speaker approach for binaural listening.
+                    The auralization engine also comes as a C++ standalone, developed with the JUCE framework. From the raytracing client, it receives direction of arrivals and paths length for each beam (impinging the listener), along with octave band absorption coefficients relative to the materials on which the beam bounced during its propagation. To each beam is associated a new audio stream, tapped-out of a delay line (further delayed and attenuated as the aforementioned path length grows) and encoded on a set of Ambisonic channels (with spherical harmonics weights issued from its direction of arrival) before being summed with its peers. Octave band filters are applied prior to the Ambisonic encoding to account for beam-specific absorption. The resulting Ambisonic field is then decoded on a set of virtual speaker for binaural listening.
                 </p>
             </div>
         </div>
@@ -81,7 +81,7 @@ layout: default
         <div class="row">
             <div class="col-xs-9 text-left text-justify">
                 <h2 class="section-heading">Blender Add-on</h2>
-                <p>The framework exploit Blender for its main interface. The EVERTims add-on sits on Blender tool-shelf, allowing to define 3D objects as EVERTims elements (room, source, listener, etc.) and launch both raytracing client and auralization engine (as python subprocesses). Any user modification on room's mesh and material triggers automatic uploads to the raytracing client, as do sources and listeners re-locations and re-orientations. The add-on seamlessly runs in the Game Engine to provide real-time auralization during the final exploration of the virtual model.</p>
+                <p>The framework uses Blender as its main interface. The EVERTims add-on sits on Blender tool-shelf, allowing to define 3D objects as EVERTims elements (room, source, listener, etc.) and launch both raytracing client and auralization engine (as python subprocesses). Any user modification on room's mesh and material triggers automatic uploads to the raytracing client, as do sources and listeners re-locations and re-orientations. The add-on seamlessly runs in the Game Engine to provide real-time auralization during the final exploration of the virtual model.</p>
             </div>
             <div class="col-xs-3 text-center">
                 <h2 class="section-heading">&nbsp;</h2>
