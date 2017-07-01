@@ -2,19 +2,43 @@
 layout: default
 ---
 
-<!-- INSTALL EVERTims -->
-<section id="tutorial" class="bg-primary">
+<section id="tutorial-disclaimer" class="bg-primary" style="padding-top:100px;padding-bottom:0px;">
     <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p><i>Make sure you followed the <a class="text-faded link-on-primary-bg" href="{{ site.baseurl }}/pages/install-instructions.html#install-blender">Blender add-on setup steps</a> before starting the tutorials.</i></p>
+                <p>
+            </div>
+        </div>  
+    </div>
+</section>
+
+<section id="tutoria-header" class="bg-primary" style="padding-top:30px;padding-bottom:0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-justify">
+                <h2>Available tutorials:</h2>
+                <ul style="padding-top:5px; list-style-type: none;">
+                <li><h4><a class="text-faded link-on-primary-bg noline" href="{{ site.baseurl }}/pages/tutorial.html#tutorial0">1. Auralization Quickstart</a></h4></li>
+                <li><h4><a class="text-faded link-on-primary-bg noline" href="{{ site.baseurl }}/pages/tutorial.html#tutorial1">2. Auralization from Scratch</a></h4></li>
+                </ul>
+            </div>
+        </div>  
+    </div>
+</section>
+
+<!-- Quickstart -->
+<section id="tutorial0" class="bg-primary" style="padding-top:30px">
+    <div class="container">
+    
         <div class="row">
             <div class="col-lg-12 text-justify">
                 <p> <h2 class="section-heading">1. Auralization Quickstart</h2> </p>
                 <p>
-                    Objective: <br>
+                    Objective:
                     import default EVERTims assets in a blank Blender scene, start the raytracing client and auralization engine, understand how to work with the framework.
                 </p>
-                <p>
-                    <i>(Make sure you followed the <a class="text-faded link-on-primary-bg" href="{{ site.baseurl }}/pages/install-instructions.html#install-blender">Blender add-on setup steps</a> before starting this tutorial)</i>
-                </p>
+
                 <p>
                     <ul>
                     <li> Open a new Blender scene </li>
@@ -31,5 +55,49 @@ layout: default
                 </P>
             </div>
         </div>
+    </div>
+</section>
+
+<hr class="secondary"> <!-- add a line-->
+
+<section id="tutorial1" class="bg-primary">
+    <div class="container">
+        <!-- Auralization from scratch -->
+        <div class="row">
+            <div class="col-lg-12 text-justify">
+                <p> <h2 class="section-heading">2. Auralization from Scratch</h2> </p>
+                <p>
+                    Objective:
+                    Create an EVERTims scene without relying on default assets import. Create and setup Room, Source, and Listener. Start an auralization session.
+                </p>
+
+                <p>
+                    <ul>
+                    <li> Open a new Blender scene, delete everything. </li>
+                    <li> Add a Cube (rename it &ldquo;Room&rdquo;), a Cone (rename it &ldquo;Source&rdquo;), and a Suzanne (rename it &ldquo;Listener&rdquo;). <i>You're free to chose different objects types and names. </i></li>
+                    <li> Resize the Room so that it encompasses both Source and Listener.</li>
+                    <li> In the EVERTims add-on panel: set the Room, Source, and Listener fields to point towards the newly created objects.</li>
+                    </ul>
+                    
+                </p>
+                <p> <img src="{{ site.baseurl }}/img/tutorial-2-1.png" class="img-responsive img-framed-on-primary" alt="" style="max-width: 50%;"> </p>
+                <p>    
+                    <ul>
+                        <li> In the EVERTims add-on panel: import the EVERTims &ldquo;Logic&rdquo; object.</li>
+                        <li> In the EVERTims add-on panel: import the Materials.txt file (list of available EVERTims materials, 1 on image below), select a material name (2), and rename the Room material (3).</li>
+                    </ul>
+                </p>
+                <p> <img src="{{ site.baseurl }}/img/tutorial-2-2.png" class="img-responsive img-framed-on-primary" alt=""> </p>
+                <p>    
+                    <ul>
+                        <li> Start the auralization engine, the raytracing client, and the &ldquo;on the fly auralization&rdquo; from the add-on. The auralization should be working as in tutorial 1.</li>
+                    </ul>
+                </p>
+                <p>At this stage, you'll notice that Suzanne's orientation doesn't match the auralization (left/right inversion). To fix this, rotate the mesh in edit mode (Z:180°), and again in object mode (Z:180°) for Suzanne to face the Source. The DOA (Direction Of Arrival) of the first image-source in the auralization engine should then be close to zero (see figure below).</p>
+                <p> <img src="{{ site.baseurl }}/img/tutorial-2-3.png" class="img-responsive img-framed-on-primary" alt="" style="max-width: 80%;"> </p>
+                <p> The same applies to the Source. To fix this, deciding e.g. that the base of the cone should represent the Source's front, use the &ldquo;Source directivity&rdquo; option of the auralization engine, setting it to &ldquo;directional&rdquo;. Hint: the pattern is a cardioid, loudest when facing forward. </p>
+            </div>
+        </div>
+
     </div>
 </section>
